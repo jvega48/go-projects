@@ -2,30 +2,20 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"time"
 )
 
 func main() {
-	fmt.Println("Hello")
-	fmt.Println("The Current Time is: ", time.Now())
-	one()
-	two()
-	three()
-	a := []int{3, 4, 3, 5}
-	a = append(a, 9)
-	fmt.Println(a)
-
+	http.HandleFunc("/", moneyFuntion)
+	http.HandleFunc("/time_stamp", timeStamp)
+	http.ListenAndServe(":8080", nil)
 }
 
-func one() {
-	time.Sleep(100 * 100 * time.Millisecond)
-	fmt.Println("One: ", time.Now())
+func moneyFuntion(w http.ResponseWriter, req *http.Request) {
+	w.Write([]byte("hello world"))
 }
-func two() {
-	time.Sleep(200 * 200 * time.Millisecond)
-	fmt.Println("two: ", time.Now())
-}
-func three() {
-	time.Sleep(300 * 300 * time.Millisecond)
-	fmt.Println("three: ", time.Now())
+
+func timeStamp(a http.ResponseWriter, r *http.Request) {
+	fmt.Println("The time route", time.Now())
 }
