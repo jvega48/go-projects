@@ -10,6 +10,8 @@ func main() {
 	constatVariables()
 	fmt.Println(time.Now())
 	dataType()
+	fmt.Println(time.Now())
+	loopsInGo()
 }
 
 func constatVariables() {
@@ -45,5 +47,21 @@ func dataType() {
 
 }
 func loopsInGo(){
-	
+	i := 1
+	for i < 10{
+		fmt.Println(i)
+		i++
+	}
+	for ii := 1; ii <= 10; ii++{
+		fmt.Println(ii)
+	}
+
+	for a := 1; a <= 10; a++{
+		fmt.Println("The number: ", a)
+		if a%2 == 0 {
+			fmt.Println("even: ", a)
+		} else {
+			fmt.Println("odd: ", a)
+		}
+	}
 }
