@@ -12,6 +12,12 @@ func main() {
 	dataType()
 	fmt.Println(time.Now())
 	loopsInGo()
+	var arrayOne[3] int = sort()
+	fmt.Println(arrayOne)
+}
+
+func sort() [3]int{
+	return [...]int{2,3,3}
 }
 
 func constatVariables() {
