@@ -14,10 +14,36 @@ func main() {
 	loopsInGo()
 	var arrayOne[3] int = sort()
 	fmt.Println(arrayOne)
+	// array initiation
+	var strArray[3] string 
+	strArray[0] = "String"
+	strArray[1] = "Two" 
+	strArray[2] = "Three"
+	// short hand array initiation
+	srtArr := [1]int{3}
+	fmt.Println(srtArr)
+	// short hand array declarations
+	numbers :=[...]int {2,3,2,3}
+	// make a copy and slice and array
+	p := make([]int, len(strArray))
+	z := buildingStruct(3,2)
+	fmt.Println(p)
+	fmt.Println(z)
+	fmt.Println(numbers)
+
+	fmt.Println(*pointers())
+}
+func buildingStruct(a int,b int) int{
+	return a * b
+}
+
+func pointers() (value *int){
+	g := 23424
+	return &g
 }
 
 func sort() [3]int{
-	return [...]int{2,3,3}
+	return [...]int{2,3,4}
 }
 
 func constatVariables() {
@@ -69,5 +95,12 @@ func loopsInGo(){
 		} else {
 			fmt.Println("odd: ", a)
 		}
+	}
+
+	// range for loop
+	name := []string{"jose", "pancho","jack"}
+
+	for a, val := range name{
+		fmt.Printf("At position %d, the character %s \n", a, val)
 	}
 }
