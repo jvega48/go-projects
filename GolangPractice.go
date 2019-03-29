@@ -2,8 +2,11 @@ package main
 
 import "fmt"
 import "time"
+import "io/ioutil"
+import "net/http"
 
 func main() {
+	getNetWorkAddress()
 	fmt.Println(time.Now())
 	fmt.Println("we are running the first app function in main")
 	fmt.Println(time.Now())
@@ -32,9 +35,23 @@ func main() {
 	fmt.Println(numbers)
 
 	fmt.Println(*pointers())
+	// lambda
+
+	// myLambdaFunction := func() bool { return 10 > 1000 }
+	// fmt.Println("Lambda functions: ", myLambdaFunction)
+
+	fmt.Println(subtractions(99))
 }
 func buildingStruct(a int,b int) int{
 	return a * b
+}
+
+// name return values 
+// specify the value names in the signature
+func subtractions(sum int) (x int, y int){
+	x = sum * 3
+	y = sum - y
+	return
 }
 
 func pointers() (value *int){
@@ -97,10 +114,18 @@ func loopsInGo(){
 		}
 	}
 
-	// range for loop
+	// array of strings 
 	name := []string{"jose", "pancho","jack"}
-
+	// range for loop
 	for a, val := range name{
 		fmt.Printf("At position %d, the character %s \n", a, val)
 	}
 }
+
+func getNetWorkAddress() {
+	resp, _ := http.Get("https://development-double-door.herokuapp.com")
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(body)
+	resp.Body.Close()
+}
+
